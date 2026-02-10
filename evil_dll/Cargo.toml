@@ -1,0 +1,15 @@
+[package]
+name = "evil_dll"
+version = "0.1.0"
+edition = "2024"
+
+[lib]
+name = "evil_dll"
+crate-type = ["cdylib", "rlib"]
+
+[dependencies]
+winapi = { version = "0.3", features = [
+    "winuser",
+    "libloaderapi",
+    "minwindef",
+] }
