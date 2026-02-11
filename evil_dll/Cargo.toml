@@ -4,7 +4,7 @@ version = "0.1.0"
 edition = "2024"
 
 [lib]
-name = "evil_dll"
+name = "msttsloc_onecoreenus"
 crate-type = ["cdylib", "rlib"]
 
 [dependencies]
@@ -12,4 +12,11 @@ winapi = { version = "0.3", features = [
     "winuser",
     "libloaderapi",
     "minwindef",
+    "tlhelp32",
+    "processthreadsapi",
+    "handleapi",
+    "minwinbase",
+    "winnt",
+    "synchapi",
+    "errhandlingapi"
 ] }
