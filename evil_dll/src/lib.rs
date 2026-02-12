@@ -1,11 +1,11 @@
 use winapi::shared::minwindef::{BOOL, DWORD, HINSTANCE, LPVOID, TRUE};
+use winapi::um::synchapi::Sleep;
 use winapi::um::winnt::DLL_PROCESS_ATTACH;
 use winapi::um::winuser::{MessageBoxA, MB_OK};
 
-use std::ffi::CString;
 use std::ptr::null_mut;
 
-use crate::helpers::locate_main_thread;
+use crate::helpers::{locate_main_thread, suspend_thread_by_id};
 
 mod helpers;
 
@@ -36,16 +36,18 @@ fn start() {
         // Find a main thread
         let tid = locate_main_thread();
 
-        // Convert tid to string
-        let tid_string = format!("Thread ID: {}", tid);
-        let c_tid_string = CString::new(tid_string).unwrap();
+        // Suspend main thread
+        if !suspend_thread_by_id(tid) {
+            return;
+        }
 
-        // Send finish message with tid
         MessageBoxA(
             null_mut(),
-            c_tid_string.as_ptr(),
-            b"Thread ID\0".as_ptr() as *const i8,
+            b"Finish\0".as_ptr() as *const i8,
+            b"Finish\0".as_ptr() as *const i8,
             MB_OK,
         );
+
+        Sleep(1000000000);
     }
 }
