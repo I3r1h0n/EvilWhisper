@@ -2,9 +2,24 @@
 name = "evil_whisper"
 version = "0.1.0"
 edition = "2024"
+authors = ["I3r1h0n"]
+description = "Tool to exploit DLL Hijacking in Windows Narrator"
 
 [dependencies]
+chrono = "0.4.43"
+console = "0.16.2"
+crossterm = "0.29.0"
+terminal_size = "0.4.3"
 zstd = "0.13"
+winapi = { version = "0.3.9", features = [
+    "securitybaseapi",
+    "winreg", 
+    "errhandlingapi"
+]}
 
 [build-dependencies]
 zstd = "0.13"
+
+[features]
+default = ["trace"]
+trace = []
