@@ -6,7 +6,7 @@
 
 ## Description
 
-A simple terminal tool written in rust, abusing the DLL Hijacking vulnerability in windows accessibility mechanism.
+A simple terminal tool written in rust, abusing the DLL Hijacking vulnerability in windows accessibility mechanism. Update the evil_dll code and rebuild the evil_whisper, and new dll will be compressed and place in evil_whisper.exe.
 
 ## Technique
 
