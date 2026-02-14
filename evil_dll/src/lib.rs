@@ -41,13 +41,6 @@ fn start() {
             return;
         }
 
-        MessageBoxA(
-            null_mut(),
-            b"Finish\0".as_ptr() as *const i8,
-            b"Finish\0".as_ptr() as *const i8,
-            MB_OK,
-        );
-
         Sleep(1000000000);
     }
 }
